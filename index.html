@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FeliTech | Portfolio</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () { emailjs.init("YOUR_EMAILJS_USER_ID"); })();
+  </script>
+
+  <style>
+    :root {
+      --neon: #00ffcc;
+      --bg-dark: #0b0b0b;
+      --bg-light: #f5f5f5;
+      --text-dark: #eaeaea;
+      --text-light: #111;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      scroll-behavior: smooth;
+      transition: 0.4s;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      background: rgba(0, 0, 0, .9);
+      backdrop-filter: blur(12px);
+      transition: 0.4s;
+    }
+
+    .navbar-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .navbar-brand span {
+      color: var(--neon);
+    }
+
+    .nav-link {
+      color: #fff !important;
+      margin-left: 15px;
+      transition: .3s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--neon) !important;
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #000428, #004e92);
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero span {
+      color: var(--neon);
+      text-shadow: 0 0 15px var(--neon);
+    }
+
+    .btn-neon {
+      border: 2px solid var(--neon);
+      color: var(--neon);
+      background: transparent;
+      transition: .3s;
+    }
+
+    .btn-neon:hover {
+      background: var(--neon);
+      color: #000;
+      box-shadow: 0 0 25px var(--neon);
+    }
+
+    /* ================= SECTIONS ================= */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      color: #00f5ff;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    /* ================= ABOUT ================= */
+    .profile-wrapper {
+      padding: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon), #00bcd4);
+      display: inline-block;
+    }
+
+    .profile-img {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px var(--neon);
+    }
+
+    /* ================= ABOUT RESPONSIVE ================= */
+    @media (max-width: 576px) {
+      .profile-wrapper {
+        padding: 8px;
+      }
+
+      .profile-img {
+        max-width: 220px;
+      }
+
+      #about {
+        padding: 40px 16px;
+      }
+
+      #about .col-lg-5 {
+        display: flex;
+        justify-content: center;
+      }
+
+      #about h2 {
+        font-size: 1.5rem;
+      }
+
+      #about h4 {
+        font-size: 1.05rem;
+      }
+
+      #about p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .profile-img {
+        max-width: 190px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .profile-img {
+        max-width: 170px;
+      }
+
+      #about h2 {
+        font-size: 1.35rem;
+      }
+
+      #about h4 {
+        font-size: 0.95rem;
+      }
+
+      #about p {
+        font-size: 0.85rem;
+      }
+    }
+
+    #about p {
+      max-width: 680px;
+    }
+
+    #about .lead {
+      font-weight: 400;
+    }
+
+    #about p small {
+      letter-spacing: 0.5px;
+    }
+
+
+    /* ================= SERVICES ================= */
+    .service-card {
+      background: #111;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      transition: .4s;
+    }
+
+    .service-card i {
+      font-size: 40px;
+      color: var(--neon);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 255, 204, .3);
+    }
+
+    /* ================= PORTFOLIO ================= */
+    .portfolio-card {
+      background: #111;
+      border-radius: 16px;
+      padding: 25px;
+      transition: .4s;
+      cursor: pointer;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 25px rgba(0, 255, 204, .25);
+    }
+
+    /* ================= SKILLS (CLEAN) ================= */
+    .skill-bar {
+      width: 100%;
+      height: 14px;
+      background: #e5e5e5;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .skill-bar-inner {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: #fff;
+      font-size: 0.8rem;
+      text-align: right;
+      padding-right: 8px;
+      line-height: 14px;
+      border-radius: 20px;
+      transition: width 1s ease-in-out;
+    }
+
+    /* ================= TESTIMONIALS ================= */
+    .testimonial-card {
+      background: #111;
+      padding: 25px;
+      border-radius: 16px;
+      margin: 15px;
+      transition: .3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px var(--neon);
+    }
+
+    /* ================= CONTACT ================= */
+    .form-control {
+      background: #111;
+      border: 1px solid #333;
+      color: #fff;
+    }
+
+    .form-control:focus {
+      border-color: var(--neon);
+      box-shadow: none;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: #000;
+      padding: 20px 0;
+      color: #aaa;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--neon);
+      margin: 0 4px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* ================= LIGHT MODE ================= */
+    body.light-mode .navbar-brand {
+      color: #000;
+    }
+
+    body.light-mode .navbar-brand span {
+      color: var(--neon);
+    }
+
+    body.light-mode .nav-link {
+      color: #111 !important;
+    }
+
+    body.light-mode .nav-link:hover {
+      color: var(--neon) !important;
+    }
+
+    body.light-mode .hero {
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    }
+
+    body.light-mode .service-card,
+    body.light-mode .portfolio-card,
+    body.light-mode .testimonial-card {
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    /* ================= MOBILE TOGGLER (MERGED) ================= */
+    @media (max-width: 991px) {
+      .navbar-toggler {
+        padding: 4px 6px;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      .navbar-toggler-icon {
+        width: 20px;
+        height: 14px;
+        background-size: 20px 14px;
+      }
+    }
+
+    /* ================= WHATSAPP BUTTON ================= */
+    #whatsappBtn {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      width: 55px;
+      height: 55px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* ================= CV BUTTON ================= */
+    .cv-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 50px;
+      border: 2px solid var(--neon);
+      color: var(--neon);
+      background: transparent;
+      transition: 0.4s;
+    }
+
+    .cv-btn:hover {
+      background: var(--neon);
+      color: #000;
+      box-shadow: 0 0 20px var(--neon);
+      transform: scale(1.05);
+    }
+
+    /* ================= GLOBAL RESPONSIVE FOR SMALL SCREENS ================= */
+@media (max-width: 320px) {
+
+  /* General body and text */
+  body {
+    font-size: 0.85rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+
+  h1.display-4 {
+    font-size: 1.8rem;
+  }
+
+  h2.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  h4, h5, h6 {
+    font-size: 1rem;
+  }
+
+  p, .lead, small {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  /* Buttons */
+  .btn, .btn-neon, .cv-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  /* Navbar links */
+  .nav-link {
+    font-size: 0.8rem;
+    margin-left: 10px;
+  }
+
+  /* Hero section */
+  .hero span {
+    font-size: 0.9rem;
+  }
+
+  /* Services */
+  .service-card-modern {
+    padding: 20px 15px;
+  }
+
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .service-card-modern h5 {
+    font-size: 1.1rem;
+  }
+
+  .service-card-modern p {
+    font-size: 0.8rem;
+  }
+
+  /* Portfolio */
+  .portfolio-card-modern {
+    padding: 20px 10px;
+  }
+
+  .portfolio-img {
+    height: 130px;
+  }
+
+  .portfolio-card-modern h6 {
+    font-size: 0.95rem;
+  }
+
+  .portfolio-card-modern p {
+    font-size: 0.8rem;
+  }
+
+  /* Testimonials */
+  .testimonial-card-modern {
+    padding: 15px;
+  }
+
+  .testimonial-img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .testimonial-card-modern p {
+    font-size: 0.75rem;
+  }
+
+  .testimonial-card-modern h6 {
+    font-size: 0.85rem;
+  }
+
+  /* Contact Form */
+  .contact-form-modern {
+    padding: 15px;
+  }
+
+  .contact-form-modern .btn-neon {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  .form-control {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  /* Skills */
+  .skill-bar-inner {
+    font-size: 0.7rem;
+  }
+
+  /* Footer */
+  footer p {
+    font-size: 0.75rem;
+  }
+
+  footer a i {
+    font-size: 1rem;
+  }
+
+  /* WhatsApp button */
+  #whatsappBtn {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+    bottom: 70px;
+    right: 15px;
+  }
+
+  /* Back to Top */
+  #backTop i {
+    font-size: 20px;
+  }
+}
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Feli<span>Tech</span></a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse justify-content-end" id="menu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link ms-lg-3" href="#contact">Contact</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / HOME -->
+  <section id="home" class="hero position-relative overflow-hidden">
+    <div class="container text-center">
+
+      <!-- Badge -->
+      <div class="mb-3">
+        <span class="badge rounded-pill px-4 py-2"
+          style="background: rgba(0,255,204,0.1); color: var(--neon); font-weight: 500;">
+          Welcome to FeliTech Webpage
+        </span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="display-4 fw-bold mt-3">
+        Building <span>Modern Digital Experiences</span><br class="d-none d-md-block">
+        That Elevate Your Brand
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="lead mt-4 mx-auto" style="max-width: 780px;">
+        FeliTech is a creative technology brand focused on crafting clean UI/UX designs,
+        scalable front-end solutions, compelling visual identities, and engaging content
+        that help individuals and businesses stand out in the digital space.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+        <a href="#portfolio" class="btn btn-neon rounded-pill px-4">
+          Explore My Work
+        </a>
+        <a href="#contact" class="btn btn-outline-light rounded-pill px-4">
+          Let’s Work Together
+        </a>
+      </div>
+
+      <!-- TRUST INDICATORS -->
+      <section id="trust" class="py-5">
+        <div class="container text-center">
+          <div class="row justify-content-center g-4">
+            <div class="col-6 col-md-3">
+              <h4 class="fw-bold text-white counter" data-target="5" data-plus="true">1</h4>
+              <small class="text-info">Years Experience</small>
+            </div>
+            <div class="col-6 col-md-3">
+              <h4 class="fw-bold text-white counter" data-target="50" data-plus="true">1</h4>
+              <small class="text-info">Projects Completed</small>
+            </div>
+            <div class="col-6 col-md-3">
+              <h4 class="fw-bold text-white counter" data-target="100" data-plus="true">1</h4>
+              <small class="text-info">Client Satisfaction</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANIMATION SCRIPT -->
+      <script>
+        const counters = document.querySelectorAll('.counter');
+
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const hasPlus = counter.getAttribute('data-plus') === 'true';
+
+          const animate = () => {
+            let count = +counter.innerText.replace('+', ''); // remove + if exists
+            const increment = Math.ceil(target / 100); // speed control
+
+            if (count < target) {
+              count += increment;
+              if (count > target) count = target;
+              counter.innerText = count + (hasPlus ? '+' : '');
+              requestAnimationFrame(animate);
+            } else {
+              // pause at target
+              setTimeout(() => {
+                counter.innerText = '1' + (hasPlus ? '+' : '');
+                requestAnimationFrame(animate);
+              }, 2000); // 2s pause before restarting
+            }
+          };
+
+          animate();
+        });
+      </script>
+
+      <style>
+        #trust {
+          background: linear-gradient(135deg, #000428, #004e92);
+          padding: 60px 0;
+        }
+
+        #trust h4 {
+          font-size: 2.2rem;
+          transition: 0.3s;
+        }
+
+        #trust small {
+          display: block;
+          margin-top: 5px;
+          font-size: 1rem;
+        }
+      </style>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container text-center text-lg-start">
+
+      <!-- Section Heading -->
+      <h2 class="section-title mb-5 text-center">About Me</h2>
+
+      <div class="row align-items-center g-5 justify-content-center">
+
+        <!-- Profile Image + Identity Tag -->
+        <div class="col-lg-5 d-flex flex-column align-items-center">
+          <div class="profile-wrapper mb-3">
+            <img id="profileImage" class="profile-img" alt="Utom Felix Ottah">
+          </div>
+          <!-- Identity Tag -->
+          <p class="text-light small mb-4"> UTOM FELIX OTTAH <br>
+            Founder & CEO <strong>FeliTech</strong>
+          </p>
+        </div>
+
+        <!-- About Content -->
+        <div class="col-lg-7 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
+          <p class="lead">
+            I’m <strong>Utom Felix Ottah</strong>, the creative mind behind
+            <strong>FeliTech</strong> a digital focused brand dedicated to crafting
+            clean, user-centered, and visually striking digital experiences.
+          </p>
+
+          <p class="mt-3">
+            With a strong blend of <strong>UI/UX design</strong>,
+            <strong>front-end development</strong>,
+            <strong>graphic design</strong>, and
+            <strong>content creation</strong>, I help individuals and businesses
+            communicate clearly, engage users effectively, and grow confidently
+            in today’s digital space.
+          </p>
+
+          <!-- Value Points -->
+          <div class="row mt-4 w-100 justify-content-center justify-content-lg-start">
+            <div class="col-6 col-sm-6 col-lg-6 mb-2 text-center text-lg-start">
+              <p>✔ Modern, user-focused UI/UX design</p>
+              <p>✔ Clean, scalable front-end architecture</p>
+            </div>
+            <div class="col-6 col-sm-6 col-lg-6 mb-2 text-center text-lg-start">
+              <p>✔ Brand-driven visual identity & graphics</p>
+              <p>✔ Strategic and engaging content writing</p>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center justify-content-lg-start">
+            <a href="#contact" class="btn btn-neon rounded-pill px-4">
+              Let’s Work Together
+            </a>
+
+            <a href="document/utom_felix_ottah.pdf" class="btn btn-neon cv-btn rounded-pill" target="_blank"
+              rel="noopener" download="UtomFelixOttahCV.pdf">
+              <i class="bi bi-download me-2"></i> Download CV
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-5" style="background: linear-gradient(135deg, #0b0b0b, #1a1a1a);">
+    <div class="container text-center">
+      <h2 class="section-title mb-5">My Services</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- Service 1 -->
+        <div class="col-md-4">
+          <div class="service-card-modern p-4">
+            <div class="icon-wrapper">
+              <i class="bi bi-palette-fill"></i>
+            </div>
+            <h5 class="mt-3">Graphic Design</h5>
+            <p>Professional visuals, branding, and creative assets that make your business stand out.</p>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="col-md-4">
+          <div class="service-card-modern p-4">
+            <div class="icon-wrapper">
+              <i class="bi bi-pencil-square"></i>
+            </div>
+            <h5 class="mt-3">Content Writing</h5>
+            <p>Engaging content that connects with your audience, SEO optimized, and brand-driven.</p>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="col-md-4">
+          <div class="service-card-modern p-4">
+            <div class="icon-wrapper">
+              <i class="bi bi-code-slash"></i>
+            </div>
+            <h5 class="mt-3">Front-End Development</h5>
+            <p>Responsive, modern websites built with clean, scalable, and efficient code.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ================= SERVICES MODERN ================= */
+    .service-card-modern {
+      background: linear-gradient(135deg, #111, #1a1a1a);
+      border-radius: 20px;
+      transition: 0.4s;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 255, 204, 0.1);
+    }
+
+    .service-card-modern:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0, 255, 204, 0.4);
+    }
+
+    .icon-wrapper {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #00ffcc, #0072ff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 2rem;
+      color: #fff;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    .service-card-modern:hover .icon-wrapper {
+      transform: scale(1.2) rotate(10deg);
+      box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
+    }
+
+    .service-card-modern h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #00ffcc;
+    }
+
+    .service-card-modern p {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* Float Animation for Icons */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 576px) {
+      .service-card-modern {
+        padding: 30px 20px;
+      }
+
+      .icon-wrapper {
+        width: 60px;
+        height: 60px;
+        font-size: 1.7rem;
+      }
+
+      .service-card-modern h5 {
+        font-size: 1.2rem;
+      }
+
+      .service-card-modern p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .service-card-modern h5 {
+        font-size: 1.1rem;
+      }
+
+      .service-card-modern p {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="py-5" style="background: linear-gradient(135deg, #0b0b0b, #1a1a1a);">
+    <div class="container text-center">
+      <h2 class="section-title mb-5">Portfolio</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- Portfolio Card 1 -->
+        <div class="col-md-4">
+          <div class="portfolio-card-modern p-3">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
+              alt="Client 1" class="portfolio-img">
+            <h6 class="mt-3">Business Website</h6>
+            <p>Responsive corporate website with modern UI/UX.</p>
+          </div>
+        </div>
+
+        <!-- Portfolio Card 2 -->
+        <div class="col-md-4">
+          <div class="portfolio-card-modern p-3">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
+              alt="Client 2" class="portfolio-img">
+            <h6 class="mt-3">Personal Portfolio</h6>
+            <p>Creative portfolio showcasing skills and projects.</p>
+          </div>
+        </div>
+
+        <!-- Portfolio Card 3 -->
+        <div class="col-md-4">
+          <div class="portfolio-card-modern p-3">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+              alt="Client 3" class="portfolio-img">
+            <h6 class="mt-3">Landing Page</h6>
+            <p>High-converting landing page for product promotion.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ================= PORTFOLIO MODERN ================= */
+    .portfolio-card-modern {
+      background: linear-gradient(135deg, #111, #1a1a1a);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.4s;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 255, 204, 0.1);
+      text-align: center;
+    }
+
+    .portfolio-card-modern:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0, 255, 204, 0.4);
+    }
+
+    .portfolio-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: 0.4s;
+    }
+
+    .portfolio-card-modern:hover .portfolio-img {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    .portfolio-card-modern h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #00ffcc;
+      margin-top: 15px;
+    }
+
+    .portfolio-card-modern p {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 576px) {
+      .portfolio-card-modern {
+        padding: 25px 15px;
+      }
+
+      .portfolio-img {
+        height: 160px;
+      }
+
+      .portfolio-card-modern h6 {
+        font-size: 1.1rem;
+      }
+
+      .portfolio-card-modern p {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .portfolio-img {
+        height: 140px;
+      }
+
+      .portfolio-card-modern h6 {
+        font-size: 1rem;
+      }
+
+      .portfolio-card-modern p {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">My Skills</h2>
+      <div class="mb-3">UI/UX Design<div class="skill-bar">
+          <div class="skill-bar-inner" data-width="90%">90%</div>
+        </div>
+      </div>
+      <div class="mb-3">Front-End Development<div class="skill-bar">
+          <div class="skill-bar-inner" data-width="85%">85%</div>
+        </div>
+      </div>
+      <div class="mb-3">Graphic Design<div class="skill-bar">
+          <div class="skill-bar-inner" data-width="80%">80%</div>
+        </div>
+      </div>
+      <div class="mb-3">Content Writing<div class="skill-bar">
+          <div class="skill-bar-inner" data-width="75%">75%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="py-5" style="background: linear-gradient(135deg, #0b0b0b, #1a1a1a);">
+    <div class="container text-center">
+      <h2 class="section-title mb-5">Testimonials</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- Testimonial Card 1 -->
+        <div class="col-md-4 col-sm-6">
+          <div class="testimonial-card-modern p-4">
+            <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=200&q=80"
+              alt="Sophia Williams" class="testimonial-img">
+            <p class="mt-3">"Felix delivered an outstanding website for our business. Highly recommended!"</p>
+            <h6 class="mt-2">Sophia Williams</h6>
+          </div>
+        </div>
+
+        <!-- Testimonial Card 2 -->
+        <div class="col-md-4 col-sm-6">
+          <div class="testimonial-card-modern p-4">
+            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&q=80"
+              alt="Liam Johnson" class="testimonial-img">
+            <p class="mt-3">"Great design skills! Very creative and responsive."</p>
+            <h6 class="mt-2">Liam Johnson</h6>
+          </div>
+        </div>
+
+        <!-- Testimonial Card 3 -->
+        <div class="col-md-4 col-sm-6">
+          <div class="testimonial-card-modern p-4">
+            <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=200&q=80"
+              alt="Emma Brown" class="testimonial-img">
+            <p class="mt-3">"Professional and timely delivery. Loved working with Felix."</p>
+            <h6 class="mt-2">Emma Brown</h6>
+          </div>
+        </div>
+
+        <!-- Testimonial Card 7 -->
+        <div class="col-md-4 col-sm-6">
+          <div class="testimonial-card-modern p-4">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80"
+              alt="Mia Davis" class="testimonial-img">
+            <p class="mt-3">"Highly recommend Felix for anyone looking for a creative and professional website."</p>
+            <h6 class="mt-2">Mia Davis</h6>
+          </div>
+        </div>
+
+        <!-- Testimonial Card 8 -->
+        <div class="col-md-4 col-sm-6">
+          <div class="testimonial-card-modern p-4">
+            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=200&q=80"
+              alt="Ethan Taylor" class="testimonial-img">
+            <p class="mt-3">"Fantastic collaboration! Felix understood exactly what we needed."</p>
+            <h6 class="mt-2">Ethan Taylor</h6>
+          </div>
+        </div>
+
+        <!-- Testimonial Card 9 -->
+        <div class="col-md-4 col-sm-6">
+          <div class="testimonial-card-modern p-4">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+              alt="Ava Anderson" class="testimonial-img">
+            <p class="mt-3">"Outstanding design and development! Truly impressed with the results."</p>
+            <h6 class="mt-2">Ava Anderson</h6>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ================= TESTIMONIAL MODERN ================= */
+    .testimonial-card-modern {
+      background: linear-gradient(135deg, #111, #1a1a1a);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 255, 204, 0.1);
+      transition: 0.4s;
+      text-align: center;
+    }
+
+    .testimonial-card-modern:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0, 255, 204, 0.4);
+    }
+
+    .testimonial-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #00ffcc;
+      transition: 0.4s;
+    }
+
+    .testimonial-card-modern:hover .testimonial-img {
+      transform: scale(1.1);
+    }
+
+    .testimonial-card-modern p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 15px;
+    }
+
+    .testimonial-card-modern h6 {
+      color: #00ffcc;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+      .testimonial-card-modern {
+        padding: 20px;
+      }
+
+      .testimonial-img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .testimonial-card-modern p {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .testimonial-img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .testimonial-card-modern p {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-5" style="background: linear-gradient(135deg, #0b0b0b, #1a1a1a);">
+    <div class="container">
+      <h2 class="section-title mb-5 text-center">Contact Me</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <form id="contactForm" class="contact-form-modern p-4 rounded-4">
+
+            <!-- Name Input -->
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="from_name" name="from_name" placeholder="Your Name" required>
+              <label for="from_name">Your Name</label>
+            </div>
+
+            <!-- Email Input -->
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="from_email" name="from_email" placeholder="Your Email"
+                required>
+              <label for="from_email">Your Email</label>
+            </div>
+
+            <!-- Message Input -->
+            <div class="form-floating mb-3">
+              <textarea class="form-control" id="message" name="message" placeholder="Your Message"
+                style="height: 140px;" required></textarea>
+              <label for="message">Your Message</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-neon w-100 py-2">Send Message</button>
+
+          </form>
+          <div id="formMessage" class="mt-3 text-center"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ================= CONTACT FORM MODERN ================= */
+    .contact-form-modern {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 10px 30px rgba(0, 255, 204, 0.2);
+      transition: 0.4s;
+    }
+
+    .contact-form-modern .form-control {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid #00ffcc;
+      color: #fff;
+      transition: 0.4s;
+    }
+
+    .contact-form-modern .form-control:focus {
+      border-color: #00ffcc;
+      box-shadow: 0 0 10px #00ffcc;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+    }
+
+    .contact-form-modern .form-floating>label {
+      color: #ccc;
+      transition: 0.3s;
+    }
+
+    .contact-form-modern .form-control:focus~label,
+    .contact-form-modern .form-control:not(:placeholder-shown)~label {
+      color: #00ffcc;
+    }
+
+    .contact-form-modern .btn-neon {
+      border: 2px solid #00ffcc;
+      background: transparent;
+      color: #00ffcc;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: 0.4s;
+    }
+
+    .contact-form-modern .btn-neon:hover {
+      background: #00ffcc;
+      color: #000;
+      box-shadow: 0 0 25px #00ffcc;
+      transform: scale(1.05);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+      .contact-form-modern {
+        padding: 20px;
+      }
+
+      .contact-form-modern .btn-neon {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .contact-form-modern .btn-neon {
+        font-size: 0.85rem;
+        padding: 10px;
+      }
+    }
+  </style>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/+2348169307567" target="_blank" id="whatsappBtn"><i class="bi bi-whatsapp"></i></a>
+  <!-- BACK TO TOP -->
+  <div id="backTop"><i class="bi bi-arrow-up"></i></div>
+
+  <!-- FOOTER -->
+  <footer class="py-4" style="background: #000; color: #aaa; text-align: center;">
+    <p>&copy; <span id="currentYear"></span> FeliTech. All Rights Reserved.</p>
+    <div class="d-flex justify-content-center gap-3 footer-icons">
+      <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
+      <a href="https://t.me/" target="_blank"><i class="bi bi-telegram"></i></a>
+      <a href="https://twitter.com/" target="_blank"><i class="bi bi-twitter"></i></a>
+      <a href="https://www.tiktok.com/" target="_blank"><i class="bi bi-tiktok"></i></a>
+      <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/" target="_blank"><i class="bi bi-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Automatically update copyright year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+
+  <style>
+    :root {
+      --footer-icon-size: 15px;
+      /* Adjust this number to reduce or increase size */
+      --footer-icon-color: #00ffcc;
+      --footer-icon-hover-color: #fff;
+    }
+
+    .footer-icons a i {
+      font-size: var(--footer-icon-size);
+      color: var(--footer-icon-color);
+      transition: 0.3s;
+    }
+
+    .footer-icons a:hover i {
+      color: var(--footer-icon-hover-color);
+      transform: scale(1.2);
+    }
+  </style>
+
+  <!-- SCRIPTS -->
+  <script>
+    const profileData = { name: "Utom Felix Ottah", image: "./images/felix-pix.jpg" };
+    document.getElementById("profileImage").src = profileData.image;
+    document.getElementById("profileImage").alt = profileData.name;
+
+    /* Scroll Reveal */
+    ScrollReveal().reveal('#home h1, #home p, #home .btn', { delay: 200, origin: 'bottom', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('#about .col-lg-5, #about .col-lg-7', { delay: 200, origin: 'left', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('#services .service-card', { interval: 200, origin: 'bottom', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('#portfolio .portfolio-card', { interval: 200, origin: 'bottom', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('#skills .skill-bar-inner', { interval: 300, origin: 'left', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('#testimonials .testimonial-card', { interval: 300, origin: 'bottom', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('#contact .col-md-7', { delay: 200, origin: 'bottom', distance: '50px', duration: 1000 });
+
+    /* Back to Top */
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => { backTop.style.display = window.scrollY > 400 ? 'flex' : 'none'; });
+    backTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* Navbar active section */
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => { const sectionTop = section.offsetTop - 80; if (pageYOffset >= sectionTop) current = section.getAttribute('id'); });
+      navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href').includes(current)) link.classList.add('active'); });
+
+      /* Animate skill bars */
+      document.querySelectorAll('.skill-bar-inner').forEach(bar => { bar.style.width = bar.getAttribute('data-width'); });
+    });
+
+    /* ================= EMAILJS CONTACT FORM ================= */
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(() => { document.getElementById('formMessage').innerHTML = '<span style="color:green;">Message sent successfully!</span>'; this.reset(); })
+        .catch(() => { document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send message. Try again.</span>'; });
+    });
+
+    /* Show WhatsApp button on scroll */
+    const whatsappBtn = document.getElementById('whatsappBtn');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        whatsappBtn.style.opacity = "1";
+        whatsappBtn.style.visibility = "visible";
+      } else {
+        whatsappBtn.style.opacity = "0";
+        whatsappBtn.style.visibility = "hidden";
+      }
+    });
+
+    /* Subtle pulse animation once */
+    setTimeout(() => {
+      whatsappBtn.animate(
+        [
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.15)' },
+          { transform: 'scale(1)' }
+        ],
+        { duration: 800, iterations: 1 }
+      );
+    }, 1500);
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
